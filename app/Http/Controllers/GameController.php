@@ -7,10 +7,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
 
-class CallbackController extends Controller
+class GameController extends Controller
 {
     //
-    public function handle(Request $request)
+    public function gameList(Request $request)
  {
        // $api_url = "https://api.honorlink.org/api";
        // $api_url = "https://api.honorlink.org/api";
@@ -70,6 +70,29 @@ class CallbackController extends Controller
         $data = $request->json()->all();
         \Log::info('Received callback:', $data);
         return response('Callback received successfully', 200);
+ }
+
+
+ function bettingList(Request $request)
+ {
+    
+  // curl -X 'GET' \
+  // 'https://api.honorlink.org/api/transactions?start=2023-12-03%2022%3A00%3A21&end=2023-11-19%2012%3A26%3A01&page=10&perPage=20' \
+  // -H 'accept: application/json' \
+  // -H 'Authorization: Bearer TgeQK2POExchRm2FoWNHeTHjS6LlseeTDwwxjcsp'
+
+  $response = Http::withHeaders([
+    'accept' => 'application/json',
+    'Authorization' => 'Bearer TgeQK2POExchRm2FoWNHeTHjS6LlseeTDwwxjcsp',])
+    ->get('https://api.honorlink.org/api/transactions?start=2023-12-03%2022%3A00%3A21&end=2023-11-19%2012%3A26%3A01&page=10&perPage=20', [
+        'start' => '2023-12-03 22:00:21',
+        'end' => '2023-11-19 12:26:01',
+        'page' => '1',
+        'perPage' => '20',
+    ]);
+    $trans = $response->json(); // This will contain your response body as an array
+    dd($trans);
+    return view('bettingList');
  }
 
 }

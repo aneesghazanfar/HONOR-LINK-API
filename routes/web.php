@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 
-use App\Http\Controllers\CallbackController;
+use App\Http\Controllers\GameController;
 
 
 /*
@@ -23,9 +23,9 @@ Route::get('/', function () {
     return redirect('/login');
 });
 
-Route::get('/callback', [CallbackController::class, 'handle']);
-
+// Route::get('/callback', [GameController::class, 'handle']);
+Route::get('/res/gameList', [GameController::class, 'gameList']);
+Route::get('/res/bettingList', [GameController::class, 'bettingList']);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/home1', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

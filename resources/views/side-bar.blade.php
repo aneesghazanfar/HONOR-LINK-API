@@ -9,10 +9,10 @@
             <a href="/home">HOME</a>
         </li>
         <li>
-            <a href="/callback">GAME LIST</a>
+            <a href="/res/gameList">GAME LIST</a>
         </li>
         <li>
-            <a href="">Betting List</a>
+            <a href="/res/bettingList">Betting List</a>
         </li>
         <li>
             <a href="">Charge Request</a>

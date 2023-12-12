@@ -31,18 +31,34 @@
     }
 
     .content ul.main {
-        list-style: disc; /* Added bullets for list items */
-        padding: 2px 0;
-        font-size: 1.2em;
-        font-weight: 500;
-        color: #000; /* Set text color to black for list items */
-    }
+    list-style: disc; /* Added bullets for list items */
+    padding: 2px 0;
+    font-size: 1.2em;
+    font-weight: 500;
+    color: #000; /* Set text color to black for list items */
+    font-family: "Spoqa Han Sans", sans-serif; /* Set font family */
+}
+
+/* Additional styles for accessibility */
+.content ul.main li {
+    contrast: 7.45; /* Set contrast */
+}
+
+.content ul.main li:focus {
+    outline: 2px solid #555555; /* Set focus outline color */
+}
+
+    .material-icons {
+      
+    font-size: 1.5em;
+    margin: 0 0 3px 0;
+}
 </style>
 </head>
 
 <div class="container">
     <div class="content">
-        <h2><span class="material-icons">subtitles</span> XTREEM DEMO</h2>
+        <h2><span class="material-icons">subtitles</span> Xtreem Demo</h2>
         <ul class="main">
             <li>Using XTREEM Default API</li>
             <li>Using the XTREEM Extension API</li>
