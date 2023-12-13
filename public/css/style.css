@@ -1,155 +1,224 @@
-body {
-  background-color: #9f9da7;
-  font-size: 1.6rem;
-  font-family: "Open Sans", sans-serif;
-  color: #2b3e51;
+.container {
+    margin-top: 1.5cm;
+    margin-left: 210px; /* Adjust based on your sidebar width */
+    padding: 20px;
+    background-color: #fff;
+    transition: margin-left 0.3s; /* Add smooth transition for better user experience */
+}
+
+.content {
+    width: calc(100% - 40px); /* Adjust the width based on your design */
+}
+
+/* Add media query to adjust container margin for smaller screens */
+@media (max-width: 768px) {
+    .container {
+        margin-left: 0; /* Close the sidebar on smaller screens */
+    }
 }
 
 h2 {
-  font-weight: 300;
-  text-align: center;
+    display: inline-block;
+    margin: 0 0 10px;
+    font-size: 2em;
+    letter-spacing: -0.05em;
+    color: #222;
 }
 
-p {
-  position: relative;
+.content ul.main {
+list-style: disc; /* Added bullets for list items */
+padding: 2px 0;
+font-size: 1.2em;
+font-weight: 500;
+color: #000; /* Set text color to black for list items */
+font-family: "Spoqa Han Sans", sans-serif; /* Set font family */
 }
 
-a,
-a:link,
-a:visited,
-a:active {
-  color: #3ca9e2;
-  -webkit-transition: all 0.2s ease;
-  transition: all 0.2s ease;
-}
-a:focus, a:hover,
-a:link:focus,
-a:link:hover,
-a:visited:focus,
-a:visited:hover,
-a:active:focus,
-a:active:hover {
-  color: #329dd5;
-  -webkit-transition: all 0.2s ease;
-  transition: all 0.2s ease;
+/* Additional styles for accessibility */
+.content ul.main li {
+contrast: 7.45; /* Set contrast */
 }
 
-#login-form-wrap {
-  background-color: #fff;
-  width: 35%;
-  margin: 30px auto;
-  text-align: center;
-  padding: 20px 0 0 0;
-  border-radius: 4px;
-  box-shadow: 0px 30px 50px 0px rgba(0, 0, 0, 0.2);
+.content ul.main li:focus {
+outline: 2px solid #555555; /* Set focus outline color */
 }
 
-#login-form {
-  padding: 0 60px;
+.material-icons {
+  
+font-size: 1.5em;
+margin: 0 0 3px 0;
 }
 
-input {
-  display: block;
-  box-sizing: border-box;
-  width: 100%;
-  outline: none;
-  height: 60px;
-  line-height: 60px;
-  border-radius: 4px;
+
+
+
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
 }
 
-input[type="text"],
-input[type="email"] {
-  width: 100%;
-  padding: 0 0 0 10px;
-  margin: 0;
-  color: #8a8b8e;
-  border: 1px solid #c2c0ca;
-  font-style: normal;
-  font-size: 16px;
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-  position: relative;
-  display: inline-block;
-  background: none;
-}
-input[type="text"]:focus,
-input[type="email"]:focus {
-  border-color: #3ca9e2;
-}
-input[type="text"]:focus:invalid,
-input[type="email"]:focus:invalid {
-  color: #cc1e2b;
-  border-color: #cc1e2b;
-}
-input[type="text"]:valid ~ .validation,
-input[type="email"]:valid ~ .validation {
-  display: block;
-  border-color: #0C0;
-}
-input[type="text"]:valid ~ .validation span,
-input[type="email"]:valid ~ .validation span {
-  background: #0C0;
-  position: absolute;
-  border-radius: 6px;
-}
-input[type="text"]:valid ~ .validation span:first-child,
-input[type="email"]:valid ~ .validation span:first-child {
-  top: 30px;
-  left: 14px;
-  width: 20px;
-  height: 3px;
-  -webkit-transform: rotate(-45deg);
-          transform: rotate(-45deg);
-}
-input[type="text"]:valid ~ .validation span:last-child,
-input[type="email"]:valid ~ .validation span:last-child {
-  top: 35px;
-  left: 8px;
-  width: 11px;
-  height: 3px;
-  -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 1px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.validation {
-  display: none;
-  position: absolute;
-  content: " ";
-  height: 60px;
-  width: 30px;
-  right: 15px;
-  top: 0px;
+.header h1 {
+    margin: 0;
+    font-size: 1.5em;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.05em;
+    color: #305bbb;
 }
 
-input[type="submit"] {
-  border: none;
-  display: block;
-  background-color: #3ca9e2;
-  color: #fff;
-  font-weight: bold;
-  text-transform: uppercase;
-  cursor: pointer;
-  -webkit-transition: all 0.2s ease;
-  transition: all 0.2s ease;
-  font-size: 18px;
-  position: relative;
-  display: inline-block;
-  cursor: pointer;
-  text-align: center;
-}
-input[type="submit"]:hover {
-  background-color: #329dd5;
-  -webkit-transition: all 0.2s ease;
-  transition: all 0.2s ease;
+.header .money {
+    color: #305bbb;
 }
 
-#create-account-wrap {
-  background-color: #eeedf1;
-  color: #8a8b8e;
-  font-size: 14px;
-  width: 100%;
-  padding: 10px 0;
-  border-radius: 0 0 4px 4px;
+.header .logout {
+    border: 0;
+    border-radius: 4px;
+    margin-left: 10px;
+    padding: 5px;
+    font-size: 0.9em;
+    font-weight: 500;
+    color: #305bbb;
+    line-height: 1;
+    text-decoration: none;
 }
+
+
+
+
+
+
+         .container {
+            margin-top: 1.5cm;
+            margin-left: 210px; /* Adjust based on your sidebar width */
+            padding: 2px;
+            background-color: #fff;
+            transition: margin-left 0.3s; /* Add smooth transition for better user experience */
+        }
+
+        .content {
+           /* Adjust the width based on your design */
+        }
+
+        /* Add media query to adjust container margin for smaller screens */
+        @media (max-width: 768px) {
+            .container {
+                margin-left: 0; /* Close the sidebar on smaller screens */
+            }
+        }
+
+        h2 {
+            display: inline-block;
+            margin: 0 0 10px;
+            font-size: 2em;
+            letter-spacing: -0.05em;
+            color: #222;
+        }
+
+        .content ul.main {
+            display: block;
+            font-size: 1.2em;
+            color: #000;
+        }
+
+        .gameList dt {
+            display: block;
+            font-size: 1.2em;
+            color: #000;
+        }
+
+        .gameList dd {
+            padding-left: 20px;
+        }
+
+        .gameUnit {
+            list-style: none;
+            padding: 0;
+        }
+
+        .gameUnit li {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .gameUnit a {
+            text-decoration: none;
+            color: #000;
+        }
+
+        .imgWrap img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .title {
+            margin-top: 5px;
+            font-weight: 500;
+            font-size: 1.2em;
+        }
+
+        .subtitle {
+            font-size: 1em;
+            color: #666;
+        }
+
+        .vendorList {
+            list-style: none;
+            padding: 0;
+            cursor: pointer;
+        }
+
+        .vendorList li {
+            margin-bottom: 10px;
+            font-size: 1.2em;
+            color: #000;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .vendor-content {
+            width: 100%;
+        }
+
+        .secondDivContent {
+            text-align: center;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+
+        .secondDivContent .gameUnit {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around; /* Adjust as needed */
+        }
+
+        .secondDivContent .gameUnit div {
+            width: 100%; /* Use full width within the Bootstrap column */
+            box-sizing: border-box;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .secondDivContent img {
+            max-width: 100%;
+            height: auto;
+            max-height: 100px; /* Set a max height for the images */
+        }
+
+        .secondDivContent .title {
+            margin-top: 5px;
+            font-weight: 500;
+            font-size: 1.2em;
+        }

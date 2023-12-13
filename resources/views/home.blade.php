@@ -1,62 +1,9 @@
 @include('header')
 @include('side-bar')
-
-<head>
-<style>
-    .container {
-        margin-top: 1.5cm;
-        margin-left: 210px; /* Adjust based on your sidebar width */
-        padding: 20px;
-        background-color: #fff;
-        transition: margin-left 0.3s; /* Add smooth transition for better user experience */
-    }
-
-    .content {
-        width: calc(100% - 40px); /* Adjust the width based on your design */
-    }
-
-    /* Add media query to adjust container margin for smaller screens */
-    @media (max-width: 768px) {
-        .container {
-            margin-left: 0; /* Close the sidebar on smaller screens */
-        }
-    }
-
-    h2 {
-        display: inline-block;
-        margin: 0 0 10px;
-        font-size: 2em;
-        letter-spacing: -0.05em;
-        color: #222;
-    }
-
-    .content ul.main {
-    list-style: disc; /* Added bullets for list items */
-    padding: 2px 0;
-    font-size: 1.2em;
-    font-weight: 500;
-    color: #000; /* Set text color to black for list items */
-    font-family: "Spoqa Han Sans", sans-serif; /* Set font family */
-}
-
-/* Additional styles for accessibility */
-.content ul.main li {
-    contrast: 7.45; /* Set contrast */
-}
-
-.content ul.main li:focus {
-    outline: 2px solid #555555; /* Set focus outline color */
-}
-
-    .material-icons {
-      
-    font-size: 1.5em;
-    margin: 0 0 3px 0;
-}
-</style>
-</head>
+<link rel="stylesheet" href="{{ asset('/css/style.css') }}">
 
 <div class="container">
+    <div class="inner">
     <div class="content">
         <h2><span class="material-icons">subtitles</span> Xtreem Demo</h2>
         <ul class="main">

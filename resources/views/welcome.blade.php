@@ -1,199 +1,72 @@
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <title>Login Page</title>
-    <style>
-        body {
-            background: #efefef;
-            color: #333;
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-        }
 
-        .card {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-            text-align: center;
-            width: 400px; /* Fixed width for the card */
-            margin-top: 5vh; /* Reduced margin for better placement on smaller screens */
-        }
-
-        .card-header {
-            color: #305BBB;
-            font-weight: bold;
-            font-size: 2em;
-        }
-
-        label {
-            color: #3498db;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            border: 1px solid #3498db;
-            border-radius: 5px;
-            box-sizing: border-box;
-            font-size: 16px;
-        }
-
-        .btn-primary {
-            background-color: #3498db;
-            color: #fff;
-            transition: background-color 0.3s ease;
-        }
-
-        .btn-primary:hover {
-            background-color: #1f618d;
-        }
-
-        .form-check-input {
-            margin-top: 5px;
-        }
-
-        .btn-link {
-            color: #3498db;
-        }
-
-        /* Additional styling for the login button */
-        .btnLogin {
-            background-color: #a6d0ff;
-            color: #305BBB;
-            font-size: 15.84px;
-            font-family: 'Spoqa Han Sans', sans-serif;
-            margin: 20px 0 0;
-            padding: 12px 0;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .btnLogin:hover {
-            background-color: #85b8e4;
-        }
-
-        /* Accessibility features */
-        .btnLogin {
-            contrast: 3.91;
-        }
-
-        .btnLogin:focus {
-            outline: none;
-            box-shadow: 0 0 0 2px #305BBB;
-        }
-
-        /* Responsive button */
-        .responsive-btn {
-            background-color: #a6d0ff;
-            color: #305BBB;
-            font-size: 15.84px;
-            font-family: 'Spoqa Han Sans', sans-serif;
-            margin: 20px 0 0;
-            padding: 12px 0;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            width: 50%; /* Full width */
-            font-weight: bold;
-        }
-
-        .responsive-btn:hover {
-            background-color: #85b8e4;
-        }
-
-        /* Media Query for responsiveness */
-        @media (max-width: 576px) {
-            .card {
-                width: 90%; /* Adjusted width for better responsiveness on smaller screens */
-                margin-top: 2vh; /* Further reduced margin for better placement on smaller screens */
-            }
-        }
-    </style>
-</head>
-
-
-
-
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('LOGIN') }}</div>
-                <BR></BR>
-
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
-
-                        <div class="row mb-3">
-                            <!-- <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('User Name') }}</label> -->
-
-                            <div class="col-md-6">
-                                <input id="email" type="text" class="form-control" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder='ID'>
-
-                                <!-- @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror -->
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end"></label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder='PASSWORD'>
-                                <br>
-                                <br>
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-                        
-
-                        <!-- <div class="row mb-3">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div> -->
-
-                        <div class="row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="responsive-btn">
-                                    {{ __('Login') }}
-                                </button>
-
-                                <!-- @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif -->
-                            </div>
-                        </div>
-                    </form>
-                </div>
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+        <title>HONOR LiNK DEMO</title>
+        <link rel="stylesheet" href="https://demo.0c48udm537.com/css/common.css?v=1702479447">
+    </head>
+    <body>
+        <div class="loginWrap">
+            <div>
+                <h1>LOGIN</h1>
+                <form name="swapfrom" id="swapfrom" method="post" autocomplete="off">
+                    <div class="input">
+                        <input type="text" name="userid" placeholder="ID" required class="ed" />
+                    </div>
+                    <div class="input">
+                        <input type="password" name="userpass" placeholder="PASSWORD" required class="ed" />
+                    </div>
+                    <div><button type="submit" class="btnLogin">Login</button></div>
+                    <!--div><a href="https://demo.0c48udm537.com/member/register" class="register">회원가입</a></div-->
+                </form>
             </div>
         </div>
-    </div>
-</div>
 
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+        <script>
+        $(document).ready(function(){
+            $('#swapfrom').submit(function(e){
+                e.preventDefault();
+                var f = document.swapfrom;
+                if(!f.userid.value){
+                    alert('아이디를 입력하세요.');
+                    f.userid.focus();
+                    return false;
+                }
+                if(!f.userpass.value){
+                    alert('비밀번호를 입력하세요.');
+                    f.userpass.focus();
+                    return false;
+                }
+                $.ajax({
+                    type: "post",
+                    url: "https://demo.0c48udm537.com/login/loginCheck",
+                    data: {
+                        id: f.userid.value,
+                        pass: f.userpass.value
+                    },
+                    dataType: "json",
+                    async: false,
+                    success: function(data){
+                        console.log(data);
+                        switch(data.status){
+                            case 1: alert('아이디 또는 비밀번호가 공백이면 안됩니다.'); break;
+                            case 2: alert('비밀번호가 일치하지 않습니다.'); break;
+                            case 3: alert('존재하지 않는 계정입니다.'); break;
+                            case 4: location.href = 'https://demo.0c48udm537.com'; break;
+                        }
+                        f.reset();
+                        return false;
+                    },
+                    error: function(jqXHR, textStatus, errorThrown){
+                        console.log(jqXHR, textStatus, errorThrown);
+                    }
+                });
+            });
+        });
+        </script>
+    </body>
+</html>

@@ -1,6 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
+
+
+
+
+
+<!-- we are not using this page in our project -->
+
+
+<!-- 우리 프로젝트에서는 이 페이지를 사용하지 않습니다 -->
 <style>
     body {
         background: linear-gradient(to right, #3498db, #2c3e50);

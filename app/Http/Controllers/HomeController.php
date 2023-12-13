@@ -25,4 +25,21 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+
+
+
+
+    public function loginCheck(Request $request)
+    {
+
+        dd("loginCheck");
+        // Your logic here to handle login check
+        // Use $request->input('id') and $request->input('pass') to get the input values
+        
+        // Simulating the response based on your AJAX code logic
+        // $status = 4; // Assuming the login is successful
+
+        // return response()->json(['status' => $status]);
+    }
 }
