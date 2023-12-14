@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-        <title>HONOR LiNK DEMO</title>
+        <title>HONOR LINK DEMO</title>
         <link rel="stylesheet" href="{{ asset('/css/common.css?v=1702479447') }}">
         <!-- <link rel="stylesheet" href="https://demo.0c48udm537.com/css/common.css?v=1702479447"> -->
     </head>
