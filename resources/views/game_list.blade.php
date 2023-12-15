@@ -7,21 +7,28 @@
                 <h2><span class="material-icons">subtitles</span> Game List</h2>
 
                 <ul class="gameUnit">
-                    @foreach ($games as $vendor => $game)
-                        <dl class="gameList" data-vd="{{ $vendor }}" data-vd="live-inplay">
-                            <dt><a href="#REAL">루비플레이 ({{ $vendor }}) <span>71</span></a></dt>
+                @foreach ($games as $vendor => $game)
+                    <?php
+                    $game_count = count($game);
+
+?>
+                        <dl class="gameList" data-vd="{{ $vendor }}" data-vd="{{ $vendor }}">
+                            <input type="hidden" name="vendor" value="{{ $vendor }}">
+                            <dt><a href="#REAL">{{ $vendor }} <span>{{ $game_count }}</span></a></dt>
                             <dd class="secondDiv" style="display: none;">
                                 <ul class="gameUnit">
-                                    @foreach($game as $key => $value)
+                                @foreach($game as $key => $value)
                                     <li>
-                                        <a href="#" data-vd="live-inplay">
+                                    <a target="_blank" href="{{ route('launch_game', ['id' => $value['id'], 'vender' =>  $vendor]) }}" data-vd="{{ $vendor }}">
                                             <div class="imgWrap">
                                                 <img src="{{ $value['thumbnail'] }}"
-                                                    alt="live-inplay" onerror="errorImg($(this));">
+                                                   onerror="errorImg($(this));">
                                             </div>
                                             <div class="title">[{{ $value['provider'] }}] {{ $value['title'] }}</div>
-                                            <div class="subtitle">{{ $value['title'] }}</div>
-                                        </a>
+                                            @if($value['langs'] != null)
+                                            <div class="subtitle">{{ $value['langs']['ko'] }}</div>
+                                            @endif
+                                            </a>
                                     </li>
                                     @endforeach
                                 </ul>
@@ -63,6 +70,13 @@
             });
         });
     });
+
+
+    function errorImg(t){
+    console.log("new");
+    t.parent().prepend('<div class="noimg"></div>');
+    t.remove();
+}
     </script>
 
 </body>

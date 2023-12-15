@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Response;
 
 
 class GameController extends Controller
@@ -30,19 +32,21 @@ class GameController extends Controller
             ])->get('https://api.honorlink.org/api/game-list');
         
             $games = $response->json(); // This will contain your response body as an array
-
+// dd($games);
             // grouped by vendor
             $games = collect($games)->groupBy('vendor')->toArray();
 
             // foreach ($games as $vendor => $game) {
             //     // dd(($vendor));
             //     foreach($game as $key => $value) {
+            //       if($value['vendor'] == 'evolution') {
             //         // dd($value);
             //         // $games[$vendor][$key]['image'] = "https://thumbnails.honorlink.org/LiveInplay/" . $value['image'];
-            //         dd($value);
+            //         var_dump($value);
+            //       }
             //     }
             // }
-                // dd($games);
+            //     dd($games);
             return view('game_list', compact('games'));
         // dd($games);
             // Now $games variable holds the response data, and you can use it in your application as needed.
@@ -73,6 +77,38 @@ class GameController extends Controller
  }
 
 
+ function launch_game($id, $vender)
+ {
+  $user_name = Auth::user()->email;
+  $game_id = $id;
+  $vender = $vender;
+  // dd($id, $vender);
+
+  $response = Http::withHeaders([
+    'accept' => 'application/json',
+    'Authorization' => 'Bearer TgeQK2POExchRm2FoWNHeTHjS6LlseeTDwwxjcsp',
+])->get('https://api.honorlink.org/api/game-launch-link', [
+    'username' => $user_name,
+    'game_id' => $game_id,
+    'vendor' => $vender,
+]);
+
+$game_link = $response->json()['link'];
+
+// dd($game_link);
+// openlink in new tab
+
+// return Response::make("<script>window.open('$game_link' '_blank');</script>");
+
+return redirect()->away($game_link);
+
+
+    // $data = $request->all();
+    // return response('Callback received successfully', 200);
+    // return response()->json($data);
+ }
+
+
  function bettingList(Request $request)
  {
     
@@ -93,6 +129,15 @@ class GameController extends Controller
     $trans = $response->json(); // This will contain your response body as an array
     dd($trans);
     return view('bettingList');
+ }
+
+
+
+ function get_data(Request $request)
+ {
+    $data = $request->all();
+    // return response('Callback received successfully', 200);
+    return response()->json($data);
  }
 
 }

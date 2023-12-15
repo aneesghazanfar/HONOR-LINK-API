@@ -24,12 +24,6 @@ Route::get('/', function () {
     return redirect('/login');
 });
 
-Route::get('/home', function () {
-    // return view('welcome');
-    // return view('login_page');
-    return redirect('/');
-});
-
 Route::post('/gamelist', [HomeController::class, 'loginCheck'])->name('gamelist');
 
 
@@ -43,5 +37,8 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/res/gameList', [GameController::class, 'gameList']);
-Route::get('/res/bettingList', [GameController::class, 'bettingList']);
+    Route::get('/res/bettingList', [GameController::class, 'bettingList']);
+    Route::get('/launch_game/{id}/{vender}', [GameController::class, 'launch_game'])->name('launch_game');
+    // Route::post('/get_game_data', [GameController::class, 'get_data']);
+
 });

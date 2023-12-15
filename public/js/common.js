@@ -491,6 +491,7 @@ function winAlert(str, a, b, c, d){
 }
 
 function errorImg(t){
+    console.log("new");
     t.parent().prepend('<div class="noimg"></div>');
     t.remove();
 }
