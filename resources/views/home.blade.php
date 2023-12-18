@@ -34,7 +34,7 @@
 <iframe name="hiddenframe" class="hiddenframe"></iframe>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
-<script src="https://demo.0c48udm537.com/js/common.js?v=1702059537"></script>
+<script src="{{ asset('/js/common.js?v=') }}<?php echo time()?>"></script>
 </body>
 
 </html>

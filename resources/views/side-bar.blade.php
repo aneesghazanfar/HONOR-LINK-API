@@ -17,11 +17,11 @@
         <li class="{{ $cr == 'res/bettingList' ? 'on' : '' }}">
             <a href="/res/bettingList">Betting List</a>
         </li>
-        <li class="{{ $cr == 'ch' ? 'on' : '' }}">
-            <a href="">Charge Request</a>
+        <li class="{{ $cr == 'res/charge' ? 'on' : '' }}">
+            <a href="/res/charge">Charge Request</a>
         </li>
-        <li class="{{ $cr == 'ex' ? 'on' : '' }}">
-            <a href="">Exchange Request</a>
+        <li class="{{ $cr == 'res/exchange' ? 'on' : '' }}">
+            <a href="/res/exchange">Exchange Request</a>
         </li>
     </ul>
 </div>

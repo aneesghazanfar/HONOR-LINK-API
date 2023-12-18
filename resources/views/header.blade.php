@@ -12,7 +12,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
         <script>
         </script>
-    
+
     </head>
 <body>
 <div class="header">
@@ -20,7 +20,17 @@
             <h1>XTREEM DEMO</h1>
         </div>
         <div>
-            <span class="money">￦ 10,000.00</span>
+            <?php
+use Illuminate\Support\Facades\Http;
+
+$response = Http::withHeaders([
+    'accept' => 'application/json',
+    'Authorization' => 'Bearer TgeQK2POExchRm2FoWNHeTHjS6LlseeTDwwxjcsp',
+])->get('https://api.honorlink.org/api/user?username='.Auth::user()->email);
+            $balance = $response->json()['balance'];
+            // dd($response->json()['balance']);
+            ?>
+            <span class="money">￦ {{ $balance }}</span>
             <a class="logout" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -31,7 +41,7 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
-            
+
         </div>
     </div>
 </body>

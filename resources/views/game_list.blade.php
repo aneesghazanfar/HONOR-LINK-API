@@ -10,8 +10,7 @@
                 @foreach ($games as $vendor => $game)
                     <?php
                     $game_count = count($game);
-
-?>
+                    ?>
                         <dl class="gameList" data-vd="{{ $vendor }}" data-vd="{{ $vendor }}">
                             <input type="hidden" name="vendor" value="{{ $vendor }}">
                             <dt><a href="#REAL">{{ $vendor }} <span>{{ $game_count }}</span></a></dt>

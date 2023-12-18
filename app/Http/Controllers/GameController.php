@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Response;
 
+use app\Models\User;
+
 
 class GameController extends Controller
 {
@@ -32,9 +34,9 @@ class GameController extends Controller
             ])->get('https://api.honorlink.org/api/game-list');
         
             $games = $response->json(); // This will contain your response body as an array
-// dd($games);
             // grouped by vendor
             $games = collect($games)->groupBy('vendor')->toArray();
+            // dd($games);
 
             // foreach ($games as $vendor => $game) {
             //     // dd(($vendor));
@@ -127,7 +129,6 @@ return redirect()->away($game_link);
         'perPage' => '20',
     ]);
     $trans = $response->json(); // This will contain your response body as an array
-    dd($trans);
     return view('bettingList');
  }
 
@@ -140,4 +141,68 @@ return redirect()->away($game_link);
     return response()->json($data);
  }
 
+function charge()
+  {
+
+
+$response = Http::withHeaders([
+    'accept' => 'application/json',
+    'Authorization' => 'Bearer TgeQK2POExchRm2FoWNHeTHjS6LlseeTDwwxjcsp',
+])->get('https://api.honorlink.org/api/user?username='.Auth::user()->email);
+            $data = $response->json();
+
+            // username
+            return view('add_balance', compact('data'));
+  }
+
+
+  function add_charge(Request $request)
+  {
+
+    $response = Http::withHeaders([
+      'accept' => 'application/json',
+      'Authorization' => 'Bearer TgeQK2POExchRm2FoWNHeTHjS6LlseeTDwwxjcsp',
+  ])->post('https://api.honorlink.org/api/user/add-balance', [
+    'username' => Auth::user()->email,
+    'amount' => $request->amount,
+]);
+
+
+  // $response = Http::withHeaders($headers)
+  //           ->post('https://api.honorlink.org/api/user/add-balance', [
+  //               'username' => $request->username,
+  //               'amount' => $request->amount,
+  //           ]);
+            $statusCode = $response->status();
+            return redirect()->route('charge');
+
+}
+
+
+function exchange()
+{
+$response = Http::withHeaders([
+  'accept' => 'application/json',
+  'Authorization' => 'Bearer TgeQK2POExchRm2FoWNHeTHjS6LlseeTDwwxjcsp',
+])->get('https://api.honorlink.org/api/user?username='.Auth::user()->email);
+          $data = $response->json();
+          return view('exchange', compact('data'));
+}
+
+
+function add_exchange(Request $request)
+{
+
+
+  $response = Http::withHeaders([
+    'accept' => 'application/json',
+    'Authorization' => 'Bearer TgeQK2POExchRm2FoWNHeTHjS6LlseeTDwwxjcsp',
+])->post('https://api.honorlink.org/api/user/sub-balance', [
+  'username' => Auth::user()->email,
+  'amount' => $request->amount,
+]);
+
+return redirect()->route('exchange');
+
+}
 }

@@ -40,5 +40,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/res/bettingList', [GameController::class, 'bettingList']);
     Route::get('/launch_game/{id}/{vender}', [GameController::class, 'launch_game'])->name('launch_game');
     // Route::post('/get_game_data', [GameController::class, 'get_data']);
+    Route::get('res/charge' , [GameController::class, 'charge'])->name('charge');
+    Route::post('res/add_charge' , [GameController::class, 'add_charge'])->name('add_charge');
+
+    Route::get('res/exchange' , [GameController::class, 'exchange'])->name('exchange');
+    Route::post('res/add_exchange' , [GameController::class, 'add_exchange'])->name('sub_balance');
+
 
 });
