@@ -50,7 +50,24 @@ $response = Http::withHeaders([
     </div>
 </div>
 
-<script>
+
+
+                </div>
+            </div>
+        </div>
+        <div id="overlayer"></div>
+        <div id="overlayer02"></div>
+        <div class="winAlert">
+            <div class="body"></div>
+            <div class="bottom"></div>
+        </div>
+        <div class="delayLayer"><div><div></div></div></div>
+
+        <iframe name="hiddenframe" class="hiddenframe"></iframe>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+        <script src="{{ asset('/js/common.js?v=1702823081') }}"></script>
+        <script>
     // Get references to the button and the alert div
 const exchangeBtn = document.getElementById('exchangeBtn');
 const winAlert = document.querySelector('.winAlert');
@@ -82,22 +99,5 @@ confirmBtn.addEventListener('click', function() {
 });
 
 </script>
-
-                </div>
-            </div>
-        </div>
-        <div id="overlayer"></div>
-        <div id="overlayer02"></div>
-        <div class="winAlert">
-            <div class="body"></div>
-            <div class="bottom"></div>
-        </div>
-        <div class="delayLayer"><div><div></div></div></div>
-
-        <iframe name="hiddenframe" class="hiddenframe"></iframe>
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
-        <script src="{{ asset('/js/common.js?v=1702823081') }}"></script>
-    
 
 </body></html>

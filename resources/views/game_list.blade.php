@@ -1,3 +1,4 @@
+
 <body class="menuOpen">
     @include('header')
     @include('side-bar')
@@ -7,28 +8,27 @@
                 <h2><span class="material-icons">subtitles</span> Game List</h2>
 
                 <ul class="gameUnit">
-                @foreach ($games as $vendor => $game)
-                    <?php
-                    $game_count = count($game);
-                    ?>
+                    @foreach ($games as $vendor => $game)
+                        <?php
+                        $game_count = count($game);
+                        ?>
                         <dl class="gameList" data-vd="{{ $vendor }}" data-vd="{{ $vendor }}">
                             <input type="hidden" name="vendor" value="{{ $vendor }}">
                             <dt><a href="#REAL">{{ $vendor }} <span>{{ $game_count }}</span></a></dt>
                             <dd class="secondDiv" style="display: none;">
                                 <ul class="gameUnit">
-                                @foreach($game as $key => $value)
-                                    <li>
-                                    <a target="_blank" href="{{ route('launch_game', ['id' => $value['id'], 'vender' =>  $vendor]) }}" data-vd="{{ $vendor }}">
-                                            <div class="imgWrap">
-                                                <img src="{{ $value['thumbnail'] }}"
-                                                   onerror="errorImg($(this));">
-                                            </div>
-                                            <div class="title">[{{ $value['provider'] }}] {{ $value['title'] }}</div>
-                                            @if($value['langs'] != null)
-                                            <div class="subtitle">{{ $value['langs']['ko'] }}</div>
-                                            @endif
+                                    @foreach($game as $key => $value)
+                                        <li>
+                                            <a target="_blank" href="{{ route('launch_game', ['id' => $value['id'], 'vender' =>  $vendor]) }}" data-vd="{{ $vendor }}">
+                                                <div class="imgWrap">
+                                                    <img src="{{ $value['thumbnail'] }}" loading="lazy" onerror="errorImg($(this));">
+                                                </div>
+                                                <div class="title">[{{ $value['provider'] }}] {{ $value['title'] }}</div>
+                                                @if($value['langs'] != null)
+                                                    <div class="subtitle">{{ $value['langs']['ko'] }}</div>
+                                                @endif
                                             </a>
-                                    </li>
+                                        </li>
                                     @endforeach
                                 </ul>
                             </dd>
@@ -52,31 +52,26 @@
     </div>
 
     <iframe name="hiddenframe" class="hiddenframe"></iframe>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+    <script src="{{ asset('/js/common.js?v=1702823081') }}"></script>
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var gameNameDivs = document.querySelectorAll('.gameList dt');
+        document.addEventListener('DOMContentLoaded', function () {
+            var gameNameDivs = document.querySelectorAll('.gameList dt');
 
-        gameNameDivs.forEach(function(gameNameDiv) {
-            gameNameDiv.addEventListener('click', function() {
-                var secondDiv = this.nextElementSibling;
-                if (secondDiv.style.display === 'block') {
-                    secondDiv.style.display = 'none';
-                } else {
-                    secondDiv.style.display = 'block';
-                }
+            gameNameDivs.forEach(function (gameNameDiv) {
+                gameNameDiv.addEventListener('click', function () {
+                    var secondDiv = this.nextElementSibling;
+                    if (secondDiv.style.display === 'block') {
+                        secondDiv.style.display = 'none';
+                    } else {
+                        secondDiv.style.display = 'block';
+                    }
+                });
             });
         });
-    });
 
 
-    function errorImg(t){
-    console.log("new");
-    t.parent().prepend('<div class="noimg"></div>');
-    t.remove();
-}
     </script>
-
 </body>
+
 </html>
