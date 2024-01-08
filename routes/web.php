@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\HomeController;
+use App\Schedules\TransactionsUpdate_temp;
 
 
 /*
@@ -33,7 +34,6 @@ Route::post('/gamelist', [HomeController::class, 'loginCheck'])->name('gamelist'
 Auth::routes();
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/res/gameList', [GameController::class, 'gameList']);

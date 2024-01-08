@@ -19,9 +19,6 @@ class GameController extends Controller
 {
 
 
-  function cronJob(){
-    dd("good to go");
-  }
     //
     public function gameList(Request $request)
  {
@@ -136,7 +133,7 @@ return redirect()->away($game_link);
   // calculate date 16 days before today
   $start_date_time = now()->subDays(14)->format('Y-m-d H:i:s');
   // dd($start_date_time);
-  $end_date_time = now()->addHours(9)->format('Y-m-d H:i:s');
+  $end_date_time = now()->addHours(1)->format('Y-m-d H:i:s');
 
   // dd(now()->addHours(9)->format('Y-m-d H:i:s'));
   // dd(now()->addHours(4)->format('Y-m-d H:i:s'));
@@ -258,7 +255,20 @@ return redirect('/res/bettingList/1');
 // }
 public function bettingListpage()
 {
-    // $trans = session('trans');
+
+  // $start_date_time = now()->format('Y-m-d H:i:s');
+  // - one hour
+  // $start_date_time = now()->subHours(1)->format('Y-m-d H:i:s');
+// dd($start_date_time);
+  // $start_date_time = now()->subDays(14)->format('Y-m-d H:i:s');
+  // $end_date_time = now()->addHours(1)->format('Y-m-d H:i:s');
+
+  // $start_date_time = now()->subHours(1)->format('Y-m-d H:i:s');
+        // $end_date_time = now()->format('Y-m-d H:i:s');
+
+  // dd($start_date_time, $end_date_time);
+    $trans = session('trans');
+    // dd($trans);
     $trans = array();
     $total = 118;
     $total = Transactions::count();
