@@ -38,7 +38,6 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/res/gameList', [GameController::class, 'gameList']);
     Route::get('/res/bettingList', [GameController::class, 'bettingListpage'])->name('bettingListpage');
-    // Route::get('/res/bettingList', [GameController::class, 'bettingList'])->name('bettingList');
     Route::get('/launch_game/{id}/{vender}', [GameController::class, 'launch_game'])->name('launch_game');
     // Route::post('/get_game_data', [GameController::class, 'get_data']);
     Route::get('res/charge' , [GameController::class, 'charge'])->name('charge');

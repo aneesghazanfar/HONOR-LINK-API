@@ -40,16 +40,17 @@
                                 $page = $_GET['page'];
                             else
                                 $page = 1;
-                            $i = 0;
+                            $i = 0;        
                             ?>
                         @php
                             $sortedTransactions = $transactions->sortByDesc('no');
                         @endphp
                         @foreach($sortedTransactions as $transaction)
                         @if($i >= $page * 20 - 20 && $i < $page * 20)
+                        
 
                             <tr class="{{ $transaction['amount'] > 0 ? 'plus' : 'minus' }}">
-                                <td>{{ $transaction['no'] }}</td>
+                            <td>{{ $total }}</td>
                                 <td class="title">
                                     {{ $transaction['gametitle'] }}
                                     <span class="icoBox">{{ $transaction['gamevendor'] }}</span>
@@ -62,7 +63,8 @@
                                 <td>{{ $transaction['processed_at'] }}</td>
                             </tr>
                             @endif
-                            <?php $i++; ?>
+                            <?php $i++; 
+                                $total--;?>
                         @endforeach
                     </tbody>
                 </table>
