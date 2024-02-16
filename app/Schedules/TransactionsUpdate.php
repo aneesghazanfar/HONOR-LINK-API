@@ -14,6 +14,8 @@ class TransactionsUpdate
         $end_date_time = now()->format('Y-m-d H:i:s');
         $limit = 1000;
 
+        // dd($start_date_time);
+
         $response = Http::withHeaders([
             'accept' => 'application/json',
             'Authorization' => 'Bearer TgeQK2POExchRm2FoWNHeTHjS6LlseeTDwwxjcsp',
@@ -27,7 +29,7 @@ class TransactionsUpdate
 
         $trans = $response->json();
 
-
+        // dd($trans);
         $count = 0;
 
         if (array_key_exists('data', $trans)) {
@@ -50,6 +52,11 @@ class TransactionsUpdate
                         }
                     }
                 } else {
+                    // if($tra['amount'] == 0) {
+                    //     // continue;
+                    //     p
+
+                    // }
                     // Set values for the fields
                     $transaction->userno = 1;
                     $transaction->userid = $tra['user']['id'];

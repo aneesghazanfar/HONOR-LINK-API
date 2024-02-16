@@ -27,7 +27,10 @@ $response = Http::withHeaders([
     'accept' => 'application/json',
     'Authorization' => 'Bearer TgeQK2POExchRm2FoWNHeTHjS6LlseeTDwwxjcsp',
 ])->get('https://api.honorlink.org/api/user?username='.Auth::user()->email);
-            $balance = $response->json()['balance'];
+                if($response->json() != null)
+                $balance = $response->json()['balance'];
+            else
+                $balance = 0;
             // dd($response->json()['balance']);
             ?>
             <span class="money">￦ {{ $balance }}</span>

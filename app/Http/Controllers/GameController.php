@@ -70,7 +70,7 @@ public function bettingListpage()
 {
 
       $current_page = 1;
-      $total = Transactions::where('userid', Auth::user()->userid)->count();
+      $total = Transactions::where('userid', Auth::user()->userid)->where('amount', '!=', 0)->count();
 
       $no_of_pages = $total / 20;
       $lastPage = ceil($no_of_pages);

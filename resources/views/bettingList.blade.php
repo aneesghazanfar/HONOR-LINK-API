@@ -47,6 +47,7 @@
                         @endphp
                         @foreach($sortedTransactions as $transaction)
                         @if($i >= $page * 20 - 20 && $i < $page * 20)
+                        @if($transaction['amount'] != 0)
                         
 
                             <tr class="{{ $transaction['amount'] > 0 ? 'plus' : 'minus' }}">
@@ -57,14 +58,26 @@
                                     <span class="icoBox">{{ $transaction['gametype'] }}</span>
                                     <span class="roundId">{{ $transaction['gameround'] }}</span>
                                 </td>
-                                <td>{{ $transaction['before'] }}</td>
+                                
+                                <?php
+                                    $amount = App\Models\Transactions::where('no', $transaction['no'] + 1)->get();
+                                    $bet_amount = $transaction['before'] - $amount[0]['before'];
+                                ?>
+                                <td>{{ $bet_amount }}</td>
+
+                       
                                 <td class="mtype">{{ $transaction['amount'] }}</td>
                                 <td>{{ $transaction['created_at'] }}</td>
                                 <td>{{ $transaction['processed_at'] }}</td>
                             </tr>
+                            <?php
+                              $total--;
+                              ?>
                             @endif
                             <?php $i++; 
-                                $total--;?>
+                              
+                            ?>
+                            @endif
                         @endforeach
                     </tbody>
                 </table>

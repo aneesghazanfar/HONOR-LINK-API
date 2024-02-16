@@ -6,7 +6,6 @@
     <ul>
     @php
         $cr = Route::current()->uri();
-        // var_dump($cr)
     @endphp
         <li class="{{ $cr == '/' ? 'on' : '' }}">
             <a href="/">Home</a>
